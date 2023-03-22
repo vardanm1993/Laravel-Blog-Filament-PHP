@@ -6,6 +6,7 @@ use App\Models\Post;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class PostController extends Controller
 {
@@ -20,7 +21,7 @@ class PostController extends Controller
             ->orderBy('published_at', 'desc')
             ->paginate(5);
 
-        return view('home',compact('posts'));
+        return view('home', compact('posts'));
     }
 
     /**
@@ -42,9 +43,13 @@ class PostController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Post $post)
+    public function show(Post $post): view
     {
-        //
+        if (!$post->active || $post->published_at > Carbon::now()) {
+            throw new NotFoundHttpException();
+        }
+
+        return view('post.view', compact('post'));
     }
 
     /**
