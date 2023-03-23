@@ -57,6 +57,7 @@
 
         </section>
 
+        <x-sidebar />
     </div>
 
 </x-app-layout>

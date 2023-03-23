@@ -20,7 +20,8 @@
     <!-- AlpineJS -->
     <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
     <!-- Font Awesome -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js" integrity="sha256-KzZiKy0DWYsnwMF+X1DvQngQ2/FxF7MF3Ff72XcpuPs=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js"
+            integrity="sha256-KzZiKy0DWYsnwMF+X1DvQngQ2/FxF7MF3Ff72XcpuPs=" crossorigin="anonymous"></script>
 </head>
 <body class="bg-white font-family-karla">
 
@@ -48,13 +49,15 @@
         </a>
     </div>
     <div :class="open ? 'block': 'hidden'" class="w-full flex-grow sm:flex sm:items-center sm:w-auto">
-        <div class="w-full container mx-auto flex flex-col sm:flex-row items-center justify-center text-sm font-bold uppercase mt-0 px-6 py-2">
-            <a href="#" class="hover:bg-gray-400 rounded py-2 px-4 mx-2">Technology</a>
-            <a href="#" class="hover:bg-gray-400 rounded py-2 px-4 mx-2">Automotive</a>
-            <a href="#" class="hover:bg-gray-400 rounded py-2 px-4 mx-2">Finance</a>
-            <a href="#" class="hover:bg-gray-400 rounded py-2 px-4 mx-2">Politics</a>
-            <a href="#" class="hover:bg-gray-400 rounded py-2 px-4 mx-2">Culture</a>
-            <a href="#" class="hover:bg-gray-400 rounded py-2 px-4 mx-2">Sports</a>
+        <div
+            class="w-full container mx-auto flex flex-col sm:flex-row items-center justify-center text-sm font-bold uppercase mt-0 px-6 py-2">
+            <a href="{{ route('home') }}" class="hover:bg-blue-600 hover:text-white rounded py-2 px-4 mx-2">Home</a>
+            @foreach($categories as $category)
+                <a href="{{ route('by-category', $category) }}" class="hover:bg-blue-600 hover:text-white rounded py-2 px-4 mx-2 {{ request('category') && request('category')->slug === $category->slug ? 'bg-blue-600 text-white' : '' }}">
+                    {{ $category->title }}
+                </a>
+            @endforeach
+            <a href="#" class="hover:bg-blue-600 hover:text-white rounded py-2 px-4 mx-2">About Us</a>
         </div>
     </div>
 </nav>
@@ -63,7 +66,6 @@
 <div class="container mx-auto flex flex-wrap py-6">
 
     {{ $slot }}
-
 
 
 </div>
