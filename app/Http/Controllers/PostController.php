@@ -49,7 +49,23 @@ class PostController extends Controller
             throw new NotFoundHttpException();
         }
 
-        return view('post.view', compact('post'));
+        $next = Post::query()
+            ->where('active', true)
+            ->whereDate('published_at', '<=' , Carbon::now())
+            ->whereDate('published_at', '<', $post->published_at)
+            ->orderBy('published_at', 'desc')
+            ->limit(1)
+            ->first();
+
+        $prev = Post::query()
+            ->where('active', true)
+            ->whereDate('published_at', '<=' , Carbon::now())
+            ->whereDate('published_at', '>', $post->published_at)
+            ->orderBy('published_at')
+            ->limit(1)
+            ->first();
+
+        return view('post.view', compact('post', 'next', 'prev'));
     }
 
     /**
