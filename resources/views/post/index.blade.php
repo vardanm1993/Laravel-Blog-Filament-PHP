@@ -1,4 +1,4 @@
-<x-app-layout meta-description="News Blog">
+<x-app-layout :meta-title="$category->title" meta-description="Category description">
     <!-- Posts Section -->
     <section class="w-full md:w-2/3 flex flex-col items-center px-3">
 

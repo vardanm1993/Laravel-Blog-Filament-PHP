@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tailwind Blog Template</title>
-    <meta name="author" content="">
-    <meta name="description" content="">
+    <title>{{ $metaTitle ?: 'News Blog' }}</title>
+    <meta name="author" content="News">
+    <meta name="description" content="{{ $metaDescription ?: '' }}">
 
     <!-- Tailwind -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
@@ -53,11 +53,11 @@
             class="w-full container mx-auto flex flex-col sm:flex-row items-center justify-center text-sm font-bold uppercase mt-0 px-6 py-2">
             <a href="{{ route('home') }}" class="hover:bg-blue-600 hover:text-white rounded py-2 px-4 mx-2">Home</a>
             @foreach($categories as $category)
-                <a href="{{ route('by-category', $category) }}" class="hover:bg-blue-600 hover:text-white rounded py-2 px-4 mx-2 {{ request('category') && request('category')->slug === $category->slug ? 'bg-blue-600 text-white' : '' }}">
+                <a href="{{ route('by-category', $category) }}" class="hover:bg-blue-600 hover:text-white rounded py-2 px-4 mx-2 {{ request('category')?->slug === $category->slug ? 'bg-blue-600 text-white' : '' }}">
                     {{ $category->title }}
                 </a>
             @endforeach
-            <a href="#" class="hover:bg-blue-600 hover:text-white rounded py-2 px-4 mx-2">About Us</a>
+            <a href="{{ route('about-us') }}" class="hover:bg-blue-600 hover:text-white rounded py-2 px-4 mx-2">About Us</a>
         </div>
     </div>
 </nav>
