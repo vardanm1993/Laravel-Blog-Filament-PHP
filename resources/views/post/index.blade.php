@@ -7,11 +7,11 @@
         @endforeach
 
         <!-- Pagination -->
-            {{ $posts->onEachSide(1)->links() }}
+        {{ $posts->onEachSide(1)->links() }}
 
     </section>
 
     <!-- Sidebar Section -->
-    <x-sidebar />
+    <x-sidebar/>
 </x-app-layout>
 

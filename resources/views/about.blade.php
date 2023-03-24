@@ -1,4 +1,4 @@
-<x-app-layout meta-title="About News Blog - About Us page" meta-description="Lorem ipsum" >
+<x-app-layout meta-title="About News Blog - About Us page" meta-description="Lorem ipsum">
     <section class="w-full  flex flex-col items-center px-3">
 
         <article class="w-full flex flex-col shadow my-4">
@@ -8,7 +8,7 @@
             </a>
             <div class="bg-white flex flex-col justify-start p-6">
 
-                <h1  class="text-3xl font-bold hover:text-gray-700 pb-4">
+                <h1 class="text-3xl font-bold hover:text-gray-700 pb-4">
                     {{ $widget->title }}
                 </h1>
                 <div>

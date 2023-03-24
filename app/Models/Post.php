@@ -30,7 +30,7 @@ class Post extends Model
 
     public function user(): BelongsTo
     {
-       return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class);
     }
 
     public function categories(): BelongsToMany
@@ -50,7 +50,7 @@ class Post extends Model
 
     public function getThumbnail()
     {
-        if (str_starts_with($this->thumbnail, 'http')){
+        if (str_starts_with($this->thumbnail, 'http')) {
             return $this->thumbnail;
         }
 

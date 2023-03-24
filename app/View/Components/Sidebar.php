@@ -25,7 +25,7 @@ class Sidebar extends Component
     {
         $categories = Category::query()
             ->join('category_post', 'categories.id', '=', 'category_post.category_id')
-            ->join('posts', function($join) {
+            ->join('posts', function ($join) {
                 $join->on('category_post.post_id', '=', 'posts.id')
                     ->where('posts.active', '=', true);
             })
